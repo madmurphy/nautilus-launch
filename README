@@ -1,0 +1,64 @@
+Nautilus Launch
+===============
+
+A simple Nautilus extension that allows to run executables and launchers via
+right-click menu
+
+
+Usage
+-----
+
+Just install the extension, restart Nautilus and right-click on a launcher or
+an executable. Launchers need to be valid in order to show the “Launch” menu
+item.
+
+
+Get involved
+------------
+
+The package needs help with internationalization. If a translation into your
+language is missing and you wish to get involved, here is what to do.
+
+Let's say you want to create a Dutch translation of **Nautilus Launch**. This
+package comes with only eight strings to translate:
+
+1. “Error accessing file's path”
+2. “Launcher has become invalid”
+3. “Error accessing current working directory”
+4. “Error accessing launcher's path”
+5. “Launch all”
+6. “Launch all the selected applications”
+7. “Launch”
+8. “Launch the selected application”
+
+First thing to do is to make sure that `gettext` and `intltool` are installed
+on your system. Then clone this repository and launch the following four
+commands:
+
+```
+cd nautilus-launch/po
+intltool-update -p
+msginit -l nl
+rm nautilus-launch.pot
+```
+
+Now edit the `po/LINGUAS` file and add a new line containing the abbreviated
+name of the new language (`nl`).
+
+Finally, open the file `po/nl.po` and translate the eight strings above. All
+you have to do now is to commit your changes.
+
+For any issue, [drop me a message][1].
+
+
+Free software
+-------------
+
+This extension is free software. You can redistribute it and/or modify it under
+the terms of the GPL license version 3 or any later version. See [COPYING][2]
+for details.
+
+
+  [1]: https://github.com/madmurphy/nautilus-launch/issues
+  [2]: COPYING
+

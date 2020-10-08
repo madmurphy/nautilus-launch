@@ -1,0 +1,50 @@
+# Italian translations for PACKAGE package.
+# Copyright (C) 2020 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FULL NAME <EMAIL@ADDRESS>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-08 09:52+0100\n"
+"PO-Revision-Date: 2020-10-08 09:52+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Italian <tp@lists.linux.it>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../src/nautilus-launch.c:93
+msgid "Error accessing file's path"
+msgstr "Errore nell'accedere alla posizione del file"
+
+#: ../src/nautilus-launch.c:111
+msgid "Launcher has become invalid"
+msgstr "Il lanciatore non è più valido"
+
+#: ../src/nautilus-launch.c:150
+msgid "Error accessing current working directory"
+msgstr "Errore nell'accedere alla directory di lavoro corrente"
+
+#: ../src/nautilus-launch.c:237
+msgid "Error accessing launcher's path"
+msgstr "Errore nell'accedere alla posizione del lanciatore"
+
+#: ../src/nautilus-launch.c:294
+msgid "Launch all"
+msgstr "Lancia tutto"
+
+#: ../src/nautilus-launch.c:295
+msgid "Launch all the selected applications"
+msgstr "Lancia tutte le applicazioni selezionate"
+
+#: ../src/nautilus-launch.c:301
+msgid "Launch"
+msgstr "Lancia"
+
+#: ../src/nautilus-launch.c:302
+msgid "Launch the selected application"
+msgstr "Lancia l'applicazione selezionata"
