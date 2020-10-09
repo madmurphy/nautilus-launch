@@ -70,7 +70,7 @@ static GObjectClass * parent_class;
 
 static void nautilus_launch_clicked (
 	NautilusMenuItem * const menu_item,
-	gpointer user_data
+	gpointer v_unused
 ) {
 
 	gchar * argv[] = { NULL, NULL };
@@ -90,7 +90,7 @@ static void nautilus_launch_clicked (
 
 		if (!argv[0]) {
 
-			fprintf(stderr, "Nautilus Launch: %s\n", _("Error accessing file's path"));
+			fprintf(stderr, "Nautilus Launch: %s\n", _("Error retrieving file's path"));
 			continue;
 
 		}
@@ -147,7 +147,7 @@ static void nautilus_launch_clicked (
 
 			if (!wdir) {
 
-				fprintf(stderr, "Nautilus Launch: %s\n", _("Error accessing current working directory"));
+				fprintf(stderr, "Nautilus Launch: %s\n", _("Error retrieving current working directory"));
 
 			}
 
@@ -234,7 +234,7 @@ static GList * nautilus_launch_get_file_items (
 
 			if (!fpath) {
 
-				fprintf(stderr, "Nautilus Launch: %s\n", _("Error accessing launcher's path"));
+				fprintf(stderr, "Nautilus Launch: %s\n", _("Error retrieving launcher's path"));
 				return NULL;
 
 			}
@@ -307,7 +307,7 @@ static GList * nautilus_launch_get_file_items (
 		menu_item,
 		"activate",
 		G_CALLBACK(nautilus_launch_clicked),
-		provider
+		NULL
 	);
 
 	g_object_set_data_full(

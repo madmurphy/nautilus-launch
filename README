@@ -22,10 +22,10 @@ language is missing and you wish to get involved, here is what to do.
 Let's say you want to create a Dutch translation of **Nautilus Launch**. This
 package comes with only eight strings to translate:
 
-1. “Error accessing file's path”
+1. “Error retrieving file's path”
 2. “Launcher has become invalid”
-3. “Error accessing current working directory”
-4. “Error accessing launcher's path”
+3. “Error retrieving current working directory”
+4. “Error retrieving launcher's path”
 5. “Launch all”
 6. “Launch all the selected applications”
 7. “Launch”

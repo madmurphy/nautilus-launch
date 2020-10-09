@@ -1,6 +1,6 @@
 {
 	"name": "Nautilus Launch",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "A simple Nautilus extension that allows to run executables and launchers via right-click menu",
 	"homepage": "https://github.com/madmurphy/nautilus-launch",
 	"author": "madmurphy",
