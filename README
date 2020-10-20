@@ -51,14 +51,22 @@ you have to do now is to commit your changes.
 For any issue, [drop me a message][1].
 
 
+NExtGen
+-------
+
+This extension has been created using [NExtGen][2] Nautilus extension
+generator.
+
+
 Free software
 -------------
 
 This extension is free software. You can redistribute it and/or modify it under
-the terms of the GPL license version 3 or any later version. See [COPYING][2]
+the terms of the GPL license version 3 or any later version. See [COPYING][3]
 for details.
 
 
   [1]: https://github.com/madmurphy/nautilus-launch/issues
-  [2]: COPYING
+  [2]: https://gitlab.gnome.org/madmurphy/nextgen
+  [3]: COPYING
 

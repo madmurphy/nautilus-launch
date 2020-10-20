@@ -2,6 +2,13 @@ Change Log
 ==========
 
 
+## 0.1.2
+
+Changes:
+
+* Use `--disable-static` as the default `configure` option
+
+
 ## 0.1.1
 
 Changes:

@@ -9,7 +9,7 @@ dnl  ***************************************************************************
 AC_PREREQ([2.69])
 
 AC_INIT([Nautilus Launch],
-	[0.1.1],
+	[0.1.2],
 	[madmurphy333@gmail.com],
 	[nautilus-launch],
 	[https://github.com/madmurphy/nautilus-launch])
@@ -62,7 +62,7 @@ dnl  ***************************************************************************
 
 AC_SUBST([NAUTILUS_EXTENSION_DIR], [$($PKG_CONFIG --variable=extensiondir libnautilus-extension)])
 
-LT_INIT
+LT_INIT([disable-static])
 
 AC_OUTPUT
 
