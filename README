@@ -39,7 +39,7 @@ commands:
 cd nautilus-launch/po
 intltool-update -p
 msginit -l nl
-rm nautilus-launch.pot
+rm NautilusLaunch.pot
 ```
 
 Now edit the `po/LINGUAS` file and add a new line containing the abbreviated
@@ -47,6 +47,16 @@ name of the new language (`nl`).
 
 Finally, open the file `po/nl.po` and translate the eight strings above. All
 you have to do now is to commit your changes.
+
+If you want to update an existing Dutch translation to the most recent changes
+in the extension source code, launch
+
+``` sh
+cd nautilus-launch/po
+intltool-update -p
+mv nl.po nl.po.bak && msgmerge nl.po.bak NautilusLaunch.pot > nl.po
+rm NautilusLaunch.pot nl.po.bak
+```
 
 For any issue, [drop me a message][1].
 

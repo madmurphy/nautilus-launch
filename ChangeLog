@@ -2,6 +2,14 @@ Change Log
 ==========
 
 
+## 1.0.0
+
+Changes:
+
+* Use `dngettext()` for the plural forms of `gettext` strings
+* Package review and fix this as the first stable major release (1.0.0)
+
+
 ## 0.1.2
 
 Changes:

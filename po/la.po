@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-09 13:22+0100\n"
-"PO-Revision-Date: 2020-10-09 13:22+0100\n"
+"POT-Creation-Date: 2021-04-26 21:21+0200\n"
+"PO-Revision-Date: 2021-04-26 21:21+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Latin\n"
 "Language: la\n"
@@ -17,34 +17,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=20; plural=(n != 1);\n"
 
-#: ../src/nautilus-launch.c:93
+#: ../src/nautilus-launch.c:96
 msgid "Error retrieving file's path"
 msgstr "Error per locum fasciculi recipiendum"
 
-#: ../src/nautilus-launch.c:111
+#: ../src/nautilus-launch.c:114
 msgid "Launcher has become invalid"
 msgstr "Pultrum illegitimum factus est"
 
-#: ../src/nautilus-launch.c:150
+#: ../src/nautilus-launch.c:153
 msgid "Error retrieving current working directory"
 msgstr "Error per plicum operis recipiendum"
 
-#: ../src/nautilus-launch.c:237
+#: ../src/nautilus-launch.c:240
 msgid "Error retrieving launcher's path"
 msgstr "Error per locum pultri recipiendum"
 
-#: ../src/nautilus-launch.c:294
-msgid "Launch all"
-msgstr "Pellere omnia"
+#: ../src/nautilus-launch.c:296
+msgid "_Launch"
+msgid_plural "_Launch all"
+msgstr[0] "_Pellere"
+msgstr[1] "_Pellere omnia"
 
-#: ../src/nautilus-launch.c:295
-msgid "Launch all the selected applications"
-msgstr "Pellere omnia selecta programmata"
-
-#: ../src/nautilus-launch.c:301
-msgid "Launch"
-msgstr "Pellere"
-
-#: ../src/nautilus-launch.c:302
+#: ../src/nautilus-launch.c:297
 msgid "Launch the selected application"
-msgstr "Pellere selectum programma"
+msgid_plural "Launch all the selected applications"
+msgstr[0] "Pellere selectum programma"
+msgstr[1] "Pellere omnia selecta programmata"

@@ -33,9 +33,12 @@
 #include <nautilus-extension.h>
 
 #ifdef ENABLE_NLS
+#include <libintl.h>
 #include <glib/gi18n-lib.h>
 #else
-#define _(STRING) STRING
+#define _(STRING) ((char *) (STRING))
+#define g_dngettext(DOMAIN, STRING1, STRING2, NUM) \
+	((NUM) > 1 ? (char *) (STRING2) : (char *) (STRING1))
 #endif
 
 
@@ -206,10 +209,10 @@ static GList * nautilus_launch_get_file_items (
 
 	GFileInfo * finfo;
 	GDesktopAppInfo * dfinfo;
-	gsize listlen = 0;
+	gsize sellen = 0;
 	gchar * fpath;
 
-	for (GList * iter = file_selection; iter; iter = iter->next, listlen++) {
+	for (GList * iter = file_selection; iter; iter = iter->next, sellen++) {
 
 		if (nautilus_file_info_is_directory(NAUTILUS_FILE_INFO(iter->data))) {
 
@@ -288,20 +291,12 @@ static GList * nautilus_launch_get_file_items (
 	}
 
 	NautilusMenuItem * const
-		menu_item	=	listlen > 1 ?
-							nautilus_menu_item_new(
-								"NautilusLaunch::launch",
-								_("Launch all"),
-								_("Launch all the selected applications"),
-								NULL /* icon name or `NULL` */
-							)
-						:
-							nautilus_menu_item_new(
-								"NautilusLaunch::launch",
-								_("Launch"),
-								_("Launch the selected application"),
-								NULL /* icon name or `NULL` */
-							);
+		menu_item	=	nautilus_menu_item_new(
+							"NautilusLaunch::launch",
+							g_dngettext(GETTEXT_PACKAGE, "_Launch", "_Launch all", sellen),
+							g_dngettext(GETTEXT_PACKAGE, "Launch the selected application", "Launch all the selected applications", sellen),
+							NULL /* icon name or `NULL` */
+						);
 
 	g_signal_connect(
 		menu_item,

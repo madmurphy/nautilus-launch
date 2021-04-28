@@ -9,7 +9,7 @@ dnl  ***************************************************************************
 AC_PREREQ([2.69])
 
 AC_INIT([Nautilus Launch],
-	[0.1.2],
+	[1.0.0],
 	[madmurphy333@gmail.com],
 	[nautilus-launch],
 	[https://github.com/madmurphy/nautilus-launch])

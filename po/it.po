@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-09 13:22+0100\n"
-"PO-Revision-Date: 2020-10-09 13:22+0100\n"
+"POT-Creation-Date: 2021-04-26 21:21+0200\n"
+"PO-Revision-Date: 2021-04-26 21:21+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
@@ -17,34 +17,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../src/nautilus-launch.c:93
+#: ../src/nautilus-launch.c:96
 msgid "Error retrieving file's path"
 msgstr "Errore nel recuperare la posizione del file"
 
-#: ../src/nautilus-launch.c:111
+#: ../src/nautilus-launch.c:114
 msgid "Launcher has become invalid"
 msgstr "Il lanciatore non è più valido"
 
-#: ../src/nautilus-launch.c:150
+#: ../src/nautilus-launch.c:153
 msgid "Error retrieving current working directory"
 msgstr "Errore nel recuperare la directory di lavoro corrente"
 
-#: ../src/nautilus-launch.c:237
+#: ../src/nautilus-launch.c:240
 msgid "Error retrieving launcher's path"
 msgstr "Errore nel recuperare la posizione del lanciatore"
 
-#: ../src/nautilus-launch.c:294
-msgid "Launch all"
-msgstr "Lancia tutto"
+#: ../src/nautilus-launch.c:296
+msgid "_Launch"
+msgid_plural "_Launch all"
+msgstr[0] "_Lancia"
+msgstr[1] "_Lancia tutto"
 
-#: ../src/nautilus-launch.c:295
-msgid "Launch all the selected applications"
-msgstr "Lancia tutte le applicazioni selezionate"
-
-#: ../src/nautilus-launch.c:301
-msgid "Launch"
-msgstr "Lancia"
-
-#: ../src/nautilus-launch.c:302
+#: ../src/nautilus-launch.c:297
 msgid "Launch the selected application"
-msgstr "Lancia l'applicazione selezionata"
+msgid_plural "Launch all the selected applications"
+msgstr[0] "Lancia l'applicazione selezionata"
+msgstr[1] "Lancia tutte le applicazioni selezionate"
