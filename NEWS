@@ -2,6 +2,15 @@ NEWS
 ====
 
 
+## 1.0.1
+
+Changes:
+
+* Package main repository has been moved to
+  https://gitlab.gnome.org/madmurphy/nautilus-launch
+
+
 ## 0.1.0
 
 **Nautilus Launch** has been published.
+

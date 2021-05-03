@@ -2,6 +2,15 @@ Change Log
 ==========
 
 
+## 1.0.1
+
+Changes:
+
+* Code review in the build system and the extension source code
+* Package main repository has been moved to
+  https://gitlab.gnome.org/madmurphy/nautilus-launch
+
+
 ## 1.0.0
 
 Changes:
@@ -27,3 +36,4 @@ Changes:
 ## 0.1.0
 
 **Nautilus Launch** has been published.
+

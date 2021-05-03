@@ -1,14 +1,15 @@
-# Latin translations for PACKAGE package.
-# Copyright (C) 2020 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Latin translations for nautilus-launch package.
+# Copyright (C) 2020 <madmurphy333@gmail.com>
+# This file is distributed under the same license as the nautilus-launch
+# package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-26 21:21+0200\n"
-"PO-Revision-Date: 2021-04-26 21:21+0200\n"
+"Project-Id-Version: 1.0.1\n"
+"Report-Msgid-Bugs-To: <madmurphy333@gmail.com>\n"
+"POT-Creation-Date: 2021-05-02 23:40+0200\n"
+"PO-Revision-Date: 2021-05-02 23:40+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Latin\n"
 "Language: la\n"
@@ -17,29 +18,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=20; plural=(n != 1);\n"
 
-#: ../src/nautilus-launch.c:96
+#: ../src/nautilus-launch.c:104
 msgid "Error retrieving file's path"
 msgstr "Error per locum fasciculi recipiendum"
 
-#: ../src/nautilus-launch.c:114
+#: ../src/nautilus-launch.c:126
 msgid "Launcher has become invalid"
 msgstr "Pultrum illegitimum factus est"
 
-#: ../src/nautilus-launch.c:153
+#: ../src/nautilus-launch.c:171
 msgid "Error retrieving current working directory"
 msgstr "Error per plicum operis recipiendum"
 
-#: ../src/nautilus-launch.c:240
-msgid "Error retrieving launcher's path"
-msgstr "Error per locum pultri recipiendum"
-
-#: ../src/nautilus-launch.c:296
+#: ../src/nautilus-launch.c:304
 msgid "_Launch"
 msgid_plural "_Launch all"
 msgstr[0] "_Pellere"
 msgstr[1] "_Pellere omnia"
 
-#: ../src/nautilus-launch.c:297
+#: ../src/nautilus-launch.c:307
 msgid "Launch the selected application"
 msgid_plural "Launch all the selected applications"
 msgstr[0] "Pellere selectum programma"

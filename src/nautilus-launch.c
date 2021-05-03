@@ -3,22 +3,24 @@
 
 /*\
 |*|
-|*|	nautilus-launch.c
+|*| nautilus-launch.c
 |*|
-|*|	Copyright (C) 2020 Stefano Gioffr&eacute; <madmurphy333@gmail.com>
+|*| https://gitlab.gnome.org/madmurphy/nautilus-launch
 |*|
-|*|	Nautilus Launch is free software: you can redistribute it and/or modify it
-|*|	under the terms of the GNU General Public License as published by the
-|*|	Free Software Foundation, either version 3 of the License, or
-|*|	(at your option) any later version.
+|*| Copyright (C) 2020 <madmurphy333@gmail.com>
 |*|
-|*|	Nautilus Launch is distributed in the hope that it will be useful, but
-|*|	WITHOUT ANY WARRANTY; without even the implied warranty of
-|*|	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-|*|	See the GNU General Public License for more details.
+|*| **Nautilus Launch** is free software: you can redistribute it and/or modify
+|*| it under the terms of the GNU General Public License as published by the
+|*| Free Software Foundation, either version 3 of the License, or (at your
+|*| option) any later version.
 |*|
-|*|	You should have received a copy of the GNU General Public License along
-|*|	with this program. If not, see <http://www.gnu.org/licenses/>.
+|*| **Nautilus Launch** is distributed in the hope that it will be useful, but
+|*| WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+|*| or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+|*| more details.
+|*|
+|*| You should have received a copy of the GNU General Public License along
+|*| with this program. If not, see <http://www.gnu.org/licenses/>.
 |*|
 \*/
 
@@ -35,19 +37,22 @@
 #ifdef ENABLE_NLS
 #include <libintl.h>
 #include <glib/gi18n-lib.h>
+#define I18N_INIT() \
+	bindtextdomain(GETTEXT_PACKAGE, NAUTILUS_LAUNCH_LOCALEDIR)
 #else
 #define _(STRING) ((char *) (STRING))
 #define g_dngettext(DOMAIN, STRING1, STRING2, NUM) \
 	((NUM) > 1 ? (char *) (STRING2) : (char *) (STRING1))
+#define I18N_INIT()
 #endif
 
 
 
-/*
-
-	GLOBAL TYPES AND VARIABLES
-
-*/
+/*\
+|*|
+|*|	GLOBAL TYPES AND VARIABLES
+|*|
+\*/
 
 
 typedef struct {
@@ -64,11 +69,11 @@ static GObjectClass * parent_class;
 
 
 
-/*
-
-	FUNCTIONS
-
-*/
+/*\
+|*|
+|*|	FUNCTIONS
+|*|
+\*/
 
 
 static void nautilus_launch_clicked (
@@ -79,7 +84,7 @@ static void nautilus_launch_clicked (
 	gchar * argv[] = { NULL, NULL };
 	gchar * wdir;
 	GError * launcherr = NULL;
-	GDesktopAppInfo * dfinfo;
+	GDesktopAppInfo * dainfo;
 	GList * const file_selection = g_object_get_data(
 		(GObject *) menu_item,
 		"nautilus_launch_files"
@@ -93,7 +98,11 @@ static void nautilus_launch_clicked (
 
 		if (!argv[0]) {
 
-			fprintf(stderr, "Nautilus Launch: %s\n", _("Error retrieving file's path"));
+			fprintf(
+				stderr,
+				"Nautilus Launch: %s\n",
+				_("Error retrieving file's path")
+			);
 			continue;
 
 		}
@@ -107,11 +116,15 @@ static void nautilus_launch_clicked (
 
 			/*  This is a .desktop launcher  */
 
-			dfinfo = g_desktop_app_info_new_from_filename(argv[0]);
+			dainfo = g_desktop_app_info_new_from_filename(argv[0]);
 
-			if (!dfinfo) {
+			if (!dainfo) {
 
-				fprintf(stderr, "Nautilus Launch: %s\n", _("Launcher has become invalid"));
+				fprintf(
+					stderr,
+					"Nautilus Launch: %s\n",
+					_("Launcher has become invalid")
+				);
 				continue;
 
 			}
@@ -120,7 +133,7 @@ static void nautilus_launch_clicked (
 
 			if (
 				!g_desktop_app_info_launch_uris_as_manager(
-					dfinfo,
+					dainfo,
 					NULL,
 					NULL,
 					G_SPAWN_DEFAULT,
@@ -138,19 +151,25 @@ static void nautilus_launch_clicked (
 
 			}
 
-			g_object_unref(dfinfo);
+			g_object_unref(dainfo);
 
 		} else {
 
 			/*  This is a regular executable  */
 
 			wdir = g_file_get_path(
-				nautilus_file_info_get_parent_location(NAUTILUS_FILE_INFO(iter->data))
+				nautilus_file_info_get_parent_location(
+					NAUTILUS_FILE_INFO(iter->data)
+				)
 			);
 
 			if (!wdir) {
 
-				fprintf(stderr, "Nautilus Launch: %s\n", _("Error retrieving current working directory"));
+				fprintf(
+					stderr,
+					"Nautilus Launch: %s\n",
+					_("Error retrieving current working directory")
+				);
 
 			}
 
@@ -184,23 +203,6 @@ static void nautilus_launch_clicked (
 }
 
 
-GType nautilus_launch_get_type (void) {
-
-	return nautilus_launch_type;
-
-}
-
-
-static void nautilus_launch_class_init (
-	NautilusLaunchClass * const nautilus_launch_class,
-	gpointer class_data
-) {
-
-	parent_class = g_type_class_peek_parent(nautilus_launch_class);
-
-}
-
-
 static GList * nautilus_launch_get_file_items (
 	NautilusMenuProvider * const provider,
 	GtkWidget * const window,
@@ -208,7 +210,7 @@ static GList * nautilus_launch_get_file_items (
 ) {
 
 	GFileInfo * finfo;
-	GDesktopAppInfo * dfinfo;
+	GDesktopAppInfo * dainfo;
 	gsize sellen = 0;
 	gchar * fpath;
 
@@ -237,20 +239,21 @@ static GList * nautilus_launch_get_file_items (
 
 			if (!fpath) {
 
-				fprintf(stderr, "Nautilus Launch: %s\n", _("Error retrieving launcher's path"));
+				/*  Error retrieving launcher's path  */
+
 				return NULL;
 
 			}
 
-			dfinfo = g_desktop_app_info_new_from_filename(fpath);
+			dainfo = g_desktop_app_info_new_from_filename(fpath);
 
 			g_free(fpath);
 
-			if (dfinfo) {
+			if (dainfo) {
 
 				/*  Launcher is good  */
 
-				g_object_unref(dfinfo);
+				g_object_unref(dainfo);
 				continue;
 
 			}
@@ -277,7 +280,12 @@ static GList * nautilus_launch_get_file_items (
 
 		}
 
-		if (!g_file_info_get_attribute_boolean(finfo, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE)) {
+		if (
+			!g_file_info_get_attribute_boolean(
+				finfo,
+				G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE
+			)
+		) {
 
 			/*  Non-executable files are present in the selection  */
 
@@ -291,12 +299,17 @@ static GList * nautilus_launch_get_file_items (
 	}
 
 	NautilusMenuItem * const
-		menu_item	=	nautilus_menu_item_new(
-							"NautilusLaunch::launch",
-							g_dngettext(GETTEXT_PACKAGE, "_Launch", "_Launch all", sellen),
-							g_dngettext(GETTEXT_PACKAGE, "Launch the selected application", "Launch all the selected applications", sellen),
-							NULL /* icon name or `NULL` */
-						);
+		menu_item = nautilus_menu_item_new(
+			"NautilusLaunch::launch",
+			g_dngettext(GETTEXT_PACKAGE, "_Launch", "_Launch all", sellen),
+			g_dngettext(
+				GETTEXT_PACKAGE,
+				"Launch the selected application",
+				"Launch all the selected applications",
+				sellen
+			),
+			NULL /* icon name or `NULL` */
+		);
 
 	g_signal_connect(
 		menu_item,
@@ -306,7 +319,8 @@ static GList * nautilus_launch_get_file_items (
 	);
 
 	g_object_set_data_full(
-		(GObject *) menu_item, "nautilus_launch_files",
+		(GObject *) menu_item,
+		"nautilus_launch_files",
 		nautilus_file_info_list_copy(file_selection),
 		(GDestroyNotify) nautilus_file_info_list_free
 	);
@@ -318,7 +332,7 @@ static GList * nautilus_launch_get_file_items (
 
 static void nautilus_launch_menu_provider_iface_init (
 	NautilusMenuProviderIface * const iface,
-	gpointer iface_data
+	gpointer const iface_data
 ) {
 
 	iface->get_file_items = nautilus_launch_get_file_items;
@@ -326,7 +340,19 @@ static void nautilus_launch_menu_provider_iface_init (
 }
 
 
-static void nautilus_launch_register_type (GTypeModule * const module) {
+static void nautilus_launch_class_init (
+	NautilusLaunchClass * const nautilus_launch_class,
+	gpointer class_data
+) {
+
+	parent_class = g_type_class_peek_parent(nautilus_launch_class);
+
+}
+
+
+static void nautilus_launch_register_type (
+	GTypeModule * const module
+) {
 
 	static const GTypeInfo info = {
 		sizeof(NautilusLaunchClass),
@@ -338,6 +364,7 @@ static void nautilus_launch_register_type (GTypeModule * const module) {
 		sizeof(NautilusLaunch),
 		0,
 		(GInstanceInitFunc) NULL,
+		(GTypeValueTable * ) NULL
 	};
 
 	static const GInterfaceInfo menu_provider_iface_info = {
@@ -364,12 +391,18 @@ static void nautilus_launch_register_type (GTypeModule * const module) {
 }
 
 
-void nautilus_module_initialize (GTypeModule  * const module) {
+GType nautilus_launch_get_type (void) {
 
-	#ifdef ENABLE_NLS
-	bindtextdomain(GETTEXT_PACKAGE, NAUTILUS_LAUNCH_LOCALEDIR);
-	#endif
+	return nautilus_launch_type;
 
+}
+
+
+void nautilus_module_initialize (
+	GTypeModule * const module
+) {
+
+	I18N_INIT();
 	nautilus_launch_register_type(module);
 	*provider_types = nautilus_launch_get_type();
 
@@ -383,7 +416,10 @@ void nautilus_module_shutdown (void) {
 }
 
 
-void nautilus_module_list_types (const GType ** types, int * num_types) {
+void nautilus_module_list_types (
+	const GType ** const types,
+	int * const num_types
+) {
 
 	*types = provider_types;
 	*num_types = G_N_ELEMENTS(provider_types);

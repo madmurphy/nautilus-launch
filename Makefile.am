@@ -25,6 +25,7 @@ EXTRA_DIST = \
 	README.md \
 	bootstrap \
 	package.json \
+	.editorconfig \
 	$(INTLTOOL_FILES)
 
 DISTCLEANFILES = \
@@ -32,6 +33,11 @@ DISTCLEANFILES = \
 	intltool-merge \
 	intltool-update \
 	po/.intltool-merge-cache
+
+
+# Shell expansion is supported here
+_distclean_dirs_ = \
+	'po/backups'
 
 
 if NLS_ENABLED
@@ -50,6 +56,20 @@ endif !NLS_ENABLED
 # Remove doc directory on uninstall
 uninstall-local:
 	-rm -r '$(DESTDIR)$(docdir)'
+
+
+distclean-local:
+	-rm -rf $(_distclean_dirs_);
+
+
+# Update translations
+.PHONY: i18n-update
+i18n-update:
+	(cd 'po' && intltool-update -p --gettext-package='$(PACKAGE_TARNAME)' \
+	&& mkdir -p 'backups' && grep -o '^\s*\w\S\+' 'LINGUAS' | while read \
+	coin; do mv "$${coin}.po" "$${coin}.po.bak" && msgmerge \
+	"$${coin}.po.bak" '$(PACKAGE_TARNAME).pot' > "$${coin}.po" && mv \
+	"$${coin}.po.bak" 'backups'; done; rm '$(PACKAGE_TARNAME).pot')
 
 
 # EOF
