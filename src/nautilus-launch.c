@@ -83,18 +83,22 @@ static void nautilus_launch_clicked (
 
 	gchar * argv[] = { NULL, NULL };
 	gchar * wdir;
+	GFile * location;
 	GError * launcherr = NULL;
 	GDesktopAppInfo * dainfo;
 	GList * const file_selection = g_object_get_data(
-		(GObject *) menu_item,
+		G_OBJECT(menu_item),
 		"nautilus_launch_files"
 	);
 
 	for (GList * iter = file_selection; iter; iter = iter->next) {
 
-		argv[0] = g_file_get_path(
-			nautilus_file_info_get_location(NAUTILUS_FILE_INFO(iter->data))
+		location = nautilus_file_info_get_location(
+			NAUTILUS_FILE_INFO(iter->data)
 		);
+
+		argv[0] = g_file_get_path(location);
+		g_object_unref(location);
 
 		if (!argv[0]) {
 
@@ -103,6 +107,7 @@ static void nautilus_launch_clicked (
 				"Nautilus Launch: %s\n",
 				_("Error retrieving file's path")
 			);
+
 			continue;
 
 		}
@@ -125,6 +130,7 @@ static void nautilus_launch_clicked (
 					"Nautilus Launch: %s\n",
 					_("Launcher has become invalid")
 				);
+
 				continue;
 
 			}
@@ -146,8 +152,7 @@ static void nautilus_launch_clicked (
 			) {
 
 				fprintf(stderr, "Nautilus Launch: %s\n", launcherr->message);
-				g_error_free(launcherr);
-				launcherr = NULL;
+				g_clear_error(&launcherr);
 
 			}
 
@@ -157,11 +162,12 @@ static void nautilus_launch_clicked (
 
 			/*  This is a regular executable  */
 
-			wdir = g_file_get_path(
-				nautilus_file_info_get_parent_location(
-					NAUTILUS_FILE_INFO(iter->data)
-				)
+			location = nautilus_file_info_get_parent_location(
+				NAUTILUS_FILE_INFO(iter->data)
 			);
+
+			wdir = g_file_get_path(location);
+			g_object_unref(location);
 
 			if (!wdir) {
 
@@ -187,8 +193,7 @@ static void nautilus_launch_clicked (
 			) {
 
 				fprintf(stderr, "Nautilus Launch: %s\n", launcherr->message);
-				g_error_free(launcherr);
-				launcherr = NULL;
+				g_clear_error(&launcherr);
 
 			}
 
@@ -209,6 +214,7 @@ static GList * nautilus_launch_get_file_items (
 	GList * const file_selection
 ) {
 
+	GFile * location;
 	GFileInfo * finfo;
 	GDesktopAppInfo * dainfo;
 	gsize sellen = 0;
@@ -233,9 +239,12 @@ static GList * nautilus_launch_get_file_items (
 
 			/*  This is a .desktop launcher  */
 
-			fpath = g_file_get_path(
-				nautilus_file_info_get_location(NAUTILUS_FILE_INFO(iter->data))
+			location = nautilus_file_info_get_location(
+				NAUTILUS_FILE_INFO(iter->data)
 			);
+
+			fpath = g_file_get_path(location);
+			g_object_unref(location);
 
 			if (!fpath) {
 
@@ -264,13 +273,19 @@ static GList * nautilus_launch_get_file_items (
 
 		}
 
+		location = nautilus_file_info_get_location(
+			NAUTILUS_FILE_INFO(iter->data)
+		);
+
 		finfo = g_file_query_info(
-			nautilus_file_info_get_location(NAUTILUS_FILE_INFO(iter->data)),
+			location,
 			G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE,
 			G_FILE_QUERY_INFO_NONE,
 			NULL,
 			NULL
 		);
+
+		g_object_unref(location);
 
 		if (!finfo) {
 
@@ -319,7 +334,7 @@ static GList * nautilus_launch_get_file_items (
 	);
 
 	g_object_set_data_full(
-		(GObject *) menu_item,
+		G_OBJECT(menu_item),
 		"nautilus_launch_files",
 		nautilus_file_info_list_copy(file_selection),
 		(GDestroyNotify) nautilus_file_info_list_free
@@ -364,7 +379,7 @@ static void nautilus_launch_register_type (
 		sizeof(NautilusLaunch),
 		0,
 		(GInstanceInitFunc) NULL,
-		(GTypeValueTable * ) NULL
+		(GTypeValueTable *) NULL
 	};
 
 	static const GInterfaceInfo menu_provider_iface_info = {

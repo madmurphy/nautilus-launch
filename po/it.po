@@ -6,7 +6,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.0.1\n"
+"Project-Id-Version: 1.0.2\n"
 "Report-Msgid-Bugs-To: <madmurphy333@gmail.com>\n"
 "POT-Creation-Date: 2021-05-02 23:40+0200\n"
 "PO-Revision-Date: 2021-05-02 23:40+0200\n"
@@ -18,25 +18,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../src/nautilus-launch.c:104
+#: ../src/nautilus-launch.c:108
 msgid "Error retrieving file's path"
 msgstr "Errore nel recuperare la posizione del file"
 
-#: ../src/nautilus-launch.c:126
+#: ../src/nautilus-launch.c:131
 msgid "Launcher has become invalid"
 msgstr "Il lanciatore non è più valido"
 
-#: ../src/nautilus-launch.c:171
+#: ../src/nautilus-launch.c:177
 msgid "Error retrieving current working directory"
 msgstr "Errore nel recuperare la directory di lavoro corrente"
 
-#: ../src/nautilus-launch.c:304
+#: ../src/nautilus-launch.c:319
 msgid "_Launch"
 msgid_plural "_Launch all"
 msgstr[0] "_Lancia"
 msgstr[1] "_Lancia tutto"
 
-#: ../src/nautilus-launch.c:307
+#: ../src/nautilus-launch.c:322
 msgid "Launch the selected application"
 msgid_plural "Launch all the selected applications"
 msgstr[0] "Lancia l'applicazione selezionata"
