@@ -35,11 +35,11 @@ First thing to do is to make sure that `gettext` and `intltool` are installed
 on your system. Then clone this repository and launch the following four
 commands:
 
-```
+``` sh
 cd nautilus-launch/po
-intltool-update -p
+intltool-update -p --gettext-package=nautilus-launch
 msginit -l nl
-rm NautilusLaunch.pot
+rm nautilus-launch.pot
 ```
 
 Now edit the `po/LINGUAS` file and add a new line containing the abbreviated
@@ -53,9 +53,9 @@ in the extension source code, launch
 
 ``` sh
 cd nautilus-launch/po
-intltool-update -p
-mv nl.po nl.po.bak && msgmerge nl.po.bak NautilusLaunch.pot > nl.po
-rm NautilusLaunch.pot nl.po.bak
+intltool-update -p --gettext-package=nautilus-launch
+mv nl.po nl.po.bak && msgmerge nl.po.bak nautilus-launch.pot > nl.po
+rm nautilus-launch.pot nl.po.bak
 ```
 
 For any issue, [drop me a message][1].
@@ -71,9 +71,9 @@ generator.
 Free software
 -------------
 
-This extension is free software. You can redistribute it and/or modify it under
-the terms of the GPL license version 3 or any later version. See [COPYING][3]
-for details.
+**Nautilus Launch** is free software. You can redistribute it and/or modify it
+under the terms of the GPL license version 3 or any later version. See
+[COPYING][3] for details.
 
 
   [1]: https://gitlab.gnome.org/madmurphy/nautilus-launch/issues

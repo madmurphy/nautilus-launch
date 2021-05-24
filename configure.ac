@@ -9,7 +9,7 @@ dnl  ***************************************************************************
 AC_PREREQ([2.69])
 
 AC_INIT([Nautilus Launch],
-	[1.0.2],
+	[1.0.3],
 	[madmurphy333@gmail.com],
 	[nautilus-launch],
 	[https://gitlab.gnome.org/madmurphy/nautilus-launch])
@@ -63,8 +63,10 @@ dnl     F I N A L I Z A T I O N
 dnl  ***************************************************************************
 
 
-AC_SUBST([NAUTILUS_EXTENSION_DIR],
-	["$($PKG_CONFIG --variable=extensiondir libnautilus-extension)"])
+AC_SUBST([NAUTILUS_EXTENSION_DIR], m4_normalize(["$(
+	"${PKG_CONFIG}" --define-variable='libdir=${libdir}'
+		--variable=extensiondir libnautilus-extension
+)"]))
 
 LT_INIT([disable-static])
 

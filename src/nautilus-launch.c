@@ -34,6 +34,15 @@
 #include <gio/gdesktopappinfo.h>
 #include <nautilus-extension.h>
 
+
+
+/*\
+|*|
+|*| BUILD SETTINGS
+|*|
+\*/
+
+
 #ifdef ENABLE_NLS
 #include <libintl.h>
 #include <glib/gi18n-lib.h>
@@ -50,10 +59,15 @@
 
 /*\
 |*|
-|*|	GLOBAL TYPES AND VARIABLES
+|*| GLOBAL TYPES AND VARIABLES
 |*|
 \*/
 
+
+#ifdef G_LOG_DOMAIN
+#undef G_LOG_DOMAIN
+#endif
+#define G_LOG_DOMAIN "Nautilus-Launch"
 
 typedef struct {
 	GObject parent_slot;
@@ -71,7 +85,7 @@ static GObjectClass * parent_class;
 
 /*\
 |*|
-|*|	FUNCTIONS
+|*| FUNCTIONS
 |*|
 \*/
 
@@ -86,6 +100,7 @@ static void nautilus_launch_clicked (
 	GFile * location;
 	GError * launcherr = NULL;
 	GDesktopAppInfo * dainfo;
+
 	GList * const file_selection = g_object_get_data(
 		G_OBJECT(menu_item),
 		"nautilus_launch_files"
@@ -102,12 +117,7 @@ static void nautilus_launch_clicked (
 
 		if (!argv[0]) {
 
-			fprintf(
-				stderr,
-				"Nautilus Launch: %s\n",
-				_("Error retrieving file's path")
-			);
-
+			g_message("%s", _("Error retrieving file's path"));
 			continue;
 
 		}
@@ -125,12 +135,7 @@ static void nautilus_launch_clicked (
 
 			if (!dainfo) {
 
-				fprintf(
-					stderr,
-					"Nautilus Launch: %s\n",
-					_("Launcher has become invalid")
-				);
-
+				g_message("%s", _("Launcher has become invalid"));
 				continue;
 
 			}
@@ -151,7 +156,7 @@ static void nautilus_launch_clicked (
 				)
 			) {
 
-				fprintf(stderr, "Nautilus Launch: %s\n", launcherr->message);
+				g_message("%s", launcherr->message);
 				g_clear_error(&launcherr);
 
 			}
@@ -171,9 +176,8 @@ static void nautilus_launch_clicked (
 
 			if (!wdir) {
 
-				fprintf(
-					stderr,
-					"Nautilus Launch: %s\n",
+				g_message(
+					"%s",
 					_("Error retrieving current working directory")
 				);
 
@@ -192,7 +196,7 @@ static void nautilus_launch_clicked (
 				)
 			) {
 
-				fprintf(stderr, "Nautilus Launch: %s\n", launcherr->message);
+				g_message("%s", launcherr->message);
 				g_clear_error(&launcherr);
 
 			}
@@ -413,17 +417,6 @@ GType nautilus_launch_get_type (void) {
 }
 
 
-void nautilus_module_initialize (
-	GTypeModule * const module
-) {
-
-	I18N_INIT();
-	nautilus_launch_register_type(module);
-	*provider_types = nautilus_launch_get_type();
-
-}
-
-
 void nautilus_module_shutdown (void) {
 
 	/*  Any module-specific shutdown  */
@@ -438,6 +431,17 @@ void nautilus_module_list_types (
 
 	*types = provider_types;
 	*num_types = G_N_ELEMENTS(provider_types);
+
+}
+
+
+void nautilus_module_initialize (
+	GTypeModule * const module
+) {
+
+	I18N_INIT();
+	nautilus_launch_register_type(module);
+	*provider_types = nautilus_launch_get_type();
 
 }
 
