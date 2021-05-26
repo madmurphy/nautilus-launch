@@ -1,6 +1,6 @@
 {
 	"name": "Nautilus Launch",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "A simple Nautilus extension that allows to run executables and launchers via right-click menu",
 	"homepage": "https://gitlab.gnome.org/madmurphy/nautilus-launch",
 	"author": "madmurphy",
@@ -14,8 +14,8 @@
 		"libnautilus-extension": "*",
 	},
 	"devDependencies": {
-		"pkgconf": "*",
-		"intltool": "*"
+		"gettext": "*",
+		"pkgconf": "*"
 	},
 	"src": [
 		"src/nautilus-launch.c"

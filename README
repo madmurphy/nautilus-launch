@@ -19,8 +19,8 @@ Get involved
 The package needs help with internationalization. If a translation into your
 language is missing and you wish to get involved, here is what to do.
 
-Let's say you want to create a Dutch translation of **Nautilus Launch**. This
-package comes with only eight strings to translate:
+Let's say you want to create a Dutch translation of **Nautilus Launch** (`nl`).
+This package comes with only eight strings to translate:
 
 1. “Error retrieving file's path”
 2. “Launcher has become invalid”
@@ -31,34 +31,24 @@ package comes with only eight strings to translate:
 7. “Launch”
 8. “Launch the selected application”
 
-First thing to do is to make sure that `gettext` and `intltool` are installed
-on your system. Then clone this repository and launch the following four
-commands:
+First thing to do is to make sure that **GNU Autotools** and **GNU gettext**
+are installed on your system. Then clone this repository and launch the
+following commands:
 
 ``` sh
-cd nautilus-launch/po
-intltool-update -p --gettext-package=nautilus-launch
-msginit -l nl
-rm nautilus-launch.pot
+./bootstrap
+make -C po nautilus-launch.pot
+(cd po && msginit -l nl)
+./bootstrap --clean
 ```
 
 Now edit the `po/LINGUAS` file and add a new line containing the abbreviated
 name of the new language (`nl`).
 
-Finally, open the file `po/nl.po` and translate the eight strings above. All
-you have to do now is to commit your changes.
+Finally, open the file `po/nl.po` and translate the two strings above. All you
+have to do now is to commit your changes.
 
-If you want to update an existing Dutch translation to the most recent changes
-in the extension source code, launch
-
-``` sh
-cd nautilus-launch/po
-intltool-update -p --gettext-package=nautilus-launch
-mv nl.po nl.po.bak && msgmerge nl.po.bak nautilus-launch.pot > nl.po
-rm nautilus-launch.pot nl.po.bak
-```
-
-For any issue, [drop me a message][1].
+For any issue, [drop a message][1].
 
 
 NExtGen

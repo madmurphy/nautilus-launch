@@ -2,6 +2,12 @@ NEWS
 ====
 
 
+## 1.0.4
+
+* Internationalization does not depend on **XDG intltool** anymore, but only on
+  **GNU gettext**
+
+
 ## 1.0.1
 
 Changes:
