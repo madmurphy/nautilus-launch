@@ -2,6 +2,15 @@ Change Log
 ==========
 
 
+## 1.0.5 (2021-09-03)
+
+Changes:
+
+* `AM_GNU_GETTEXT_VERSION([0.21])` has been replaced with
+  `AM_GNU_GETTEXT_VERSION([0.19])` in `configure.ac`
+* A typo has been fixed
+
+
 ## 1.0.4 (2021-05-27)
 
 Changes:

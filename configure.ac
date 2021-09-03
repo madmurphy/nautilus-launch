@@ -9,7 +9,7 @@ dnl  **************************************************************************
 AC_PREREQ([2.69])
 
 AC_INIT([Nautilus Launch],
-	[1.0.4],
+	[1.0.5],
 	[madmurphy333@gmail.com],
 	[nautilus-launch],
 	[https://gitlab.gnome.org/madmurphy/nautilus-launch])
@@ -48,7 +48,7 @@ dnl  **************************************************************************
 
 AM_GNU_GETTEXT([external])
 
-AM_GNU_GETTEXT_VERSION([0.21])
+AM_GNU_GETTEXT_VERSION([0.19])
 
 AM_CONDITIONAL([NLS_ENABLED], [test "x${USE_NLS}" != xno])
 
