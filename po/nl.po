@@ -1,0 +1,43 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR madmurphy333@gmail.com
+# This file is distributed under the same license as the nautilus-launch package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: nautilus-launch 1.0.5\n"
+"Report-Msgid-Bugs-To: madmurphy333@gmail.com\n"
+"POT-Creation-Date: 2021-09-20 14:29+0200\n"
+"PO-Revision-Date: 2021-09-20 14:40+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language: nl\n"
+
+#: src/nautilus-launch.c:113
+msgid "Error retrieving file's path"
+msgstr "De bestandslocatie kan niet worden bepaald"
+
+#: src/nautilus-launch.c:131
+msgid "Launcher has become invalid"
+msgstr "De starter is beschadigd"
+
+#: src/nautilus-launch.c:174
+msgid "Error retrieving current working directory"
+msgstr "De huidige werkmap kan niet worden bepaald"
+
+#: src/nautilus-launch.c:316
+msgid "_Launch"
+msgid_plural "_Launch all"
+msgstr[0] "_Openen"
+msgstr[1] "A_lles openen"
+
+#: src/nautilus-launch.c:319
+msgid "Launch the selected application"
+msgid_plural "Launch all the selected applications"
+msgstr[0] "Start de geselecteerde toepassing"
+msgstr[1] "Start de geselecteerde toepassingen"
