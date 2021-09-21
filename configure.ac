@@ -9,7 +9,7 @@ dnl  **************************************************************************
 AC_PREREQ([2.69])
 
 AC_INIT([Nautilus Launch],
-	[1.0.5],
+	[1.0.6],
 	[madmurphy333@gmail.com],
 	[nautilus-launch],
 	[https://gitlab.gnome.org/madmurphy/nautilus-launch])
@@ -34,12 +34,12 @@ AC_PROG_CC
 
 AC_PROG_GREP
 
-PKG_CHECK_MODULES([NAUTILUS_LAUNCH], [glib-2.0 libnautilus-extension])
-
 AC_CHECK_PROG([HAVE_PKGCONFIG], [pkg-config], [yes], [no])
 
 AS_IF([test "x${HAVE_PKGCONFIG}" = xno],
 	[AC_MSG_ERROR([you need to have pkgconfig installed!])])
+
+PKG_CHECK_MODULES([NAUTILUS_LAUNCH], [glib-2.0 libnautilus-extension])
 
 
 dnl  **************************************************************************
