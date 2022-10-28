@@ -7,13 +7,13 @@ AM_CPPFLAGS = \
 	"-DG_LOG_DOMAIN=\"NautilusLaunch\""
 
 AM_CFLAGS = \
-	-Wall\
+	-Wall \
+	-Wextra \
 	-g \
 	-pedantic \
 	$(WARN_CFLAGS) \
 	$(NAUTILUS_CFLAGS) \
-	$(GLIB_CFLAGS) \
-	$(NAUTILUS_LAUNCH_CFLAGS)
+	$(GLIB_CFLAGS)
 
 nautilus_extensiondir = $(NAUTILUS_EXTENSION_DIR)
 
@@ -22,6 +22,9 @@ nautilus_extension_LTLIBRARIES = \
 
 libnautilus_launch_la_SOURCES = \
 	nautilus-launch.c
+
+libnautilus_launch_la_CFLAGS = \
+	$(NAUTILUS_LAUNCH_CFLAGS)
 
 libnautilus_launch_la_LDFLAGS = \
 	-module \

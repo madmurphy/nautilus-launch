@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-launch 1.0.6\n"
 "Report-Msgid-Bugs-To: madmurphy333@gmail.com\n"
-"POT-Creation-Date: 2021-05-27 00:36+0200\n"
+"POT-Creation-Date: 2022-10-28 20:21+0100\n"
 "PO-Revision-Date: 2021-05-24 13:44+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish <es@tp.org.es>\n"
@@ -30,13 +30,13 @@ msgstr "El lanzador ya no es válido"
 msgid "Error retrieving current working directory"
 msgstr "Error al recuperar el directorio de trabajo actual"
 
-#: src/nautilus-launch.c:316
+#: src/nautilus-launch.c:315
 msgid "_Launch"
 msgid_plural "_Launch all"
 msgstr[0] "_Lanzar"
 msgstr[1] "_Lanzar todo"
 
-#: src/nautilus-launch.c:319
+#: src/nautilus-launch.c:318
 msgid "Launch the selected application"
 msgid_plural "Launch all the selected applications"
 msgstr[0] "Lanzar la aplicación seleccionada"

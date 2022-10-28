@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-launch 1.0.6\n"
 "Report-Msgid-Bugs-To: madmurphy333@gmail.com\n"
-"POT-Creation-Date: 2021-09-20 14:29+0200\n"
+"POT-Creation-Date: 2022-10-28 20:21+0100\n"
 "PO-Revision-Date: 2021-09-20 14:40+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
@@ -31,13 +31,13 @@ msgstr "De starter is beschadigd"
 msgid "Error retrieving current working directory"
 msgstr "De huidige werkmap kan niet worden bepaald"
 
-#: src/nautilus-launch.c:316
+#: src/nautilus-launch.c:315
 msgid "_Launch"
 msgid_plural "_Launch all"
 msgstr[0] "_Openen"
 msgstr[1] "A_lles openen"
 
-#: src/nautilus-launch.c:319
+#: src/nautilus-launch.c:318
 msgid "Launch the selected application"
 msgid_plural "Launch all the selected applications"
 msgstr[0] "Start de geselecteerde toepassing"
