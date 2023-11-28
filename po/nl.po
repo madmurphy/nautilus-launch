@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: nautilus-launch 1.0.6\n"
 "Report-Msgid-Bugs-To: madmurphy333@gmail.com\n"
 "POT-Creation-Date: 2022-10-28 20:21+0100\n"
-"PO-Revision-Date: 2021-09-20 14:40+0200\n"
-"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"PO-Revision-Date: 2023-11-28 11:30+0200\n"
+"Last-Translator: rico-vz\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr "De bestandslocatie kan niet worden bepaald"
 
 #: src/nautilus-launch.c:131
 msgid "Launcher has become invalid"
-msgstr "De starter is beschadigd"
+msgstr "Het opstartprogramma is beschadigd"
 
 #: src/nautilus-launch.c:174
 msgid "Error retrieving current working directory"
@@ -40,5 +40,5 @@ msgstr[1] "A_lles openen"
 #: src/nautilus-launch.c:318
 msgid "Launch the selected application"
 msgid_plural "Launch all the selected applications"
-msgstr[0] "Start de geselecteerde toepassing"
-msgstr[1] "Start de geselecteerde toepassingen"
+msgstr[0] "Start de geselecteerde applicatie"
+msgstr[1] "Start de geselecteerde applicaties"
